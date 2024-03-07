@@ -1,0 +1,126 @@
+.vc-button {
+  --vc-button-font-weight: var(--vc-font-weight-primary);
+  --vc-button-border-color: var(--vc-border-color);
+  --vc-button-bg-color: var(--vc-fill-color-blank);
+  --vc-button-text-color: var(--vc-text-color-regular);
+  --vc-button-disabled-text-color: var(--vc-disabled-text-color);
+  --vc-button-disabled-bg-color: var(--vc-fill-color-blank);
+  --vc-button-disabled-border-color: var(--vc-border-color-light);
+  --vc-button-hover-text-color: var(--vc-color-primary);
+  --vc-button-hover-bg-color: var(--vc-color-primary-light-9);
+  --vc-button-hover-border-color: var(--vc-color-primary-light-7);
+  --vc-button-active-text-color: var(--vc-button-hover-text-color);
+  --vc-button-active-border-color: var(--vc-color-primary);
+  --vc-button-active-bg-color: var(--vc-button-hover-bg-color);
+  --vc-button-outline-color: var(--vc-color-primary-light-5);
+  --vc-button-active-color: var(--vc-text-color-primary);
+}
+.vc-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--vc-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: .1s;
+  font-weight: var(--vc-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--vc-button-bg-color);
+  border: var(--vc-border);
+  border-color: var(--vc-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--vc-font-size-base);
+  border-radius: var(--vc-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--vc-button-hover-text-color);
+    border-color: var(--vc-button-hover-border-color);
+    background-color: var(--vc-button-hover-bg-color);
+    outline: none;    
+  }
+  &:active {
+    color: var(--vc-button-active-text-color);
+    border-color: var(--vc-button-active-border-color);
+    background-color: var(--vc-button-active-bg-color);
+    outline: none;
+  }
+  &.is-plain {
+    --vc-button-hover-text-color: var(--vc-color-primary);
+    --vc-button-hover-bg-color: var(--vc-fill-color-blank);
+    --vc-button-hover-border-color: var(--vc-color-primary);    
+  }
+  /*round*/
+  &.is-round {
+    border-radius: var(--vc-border-radius-round);
+  }
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  /*disabled*/
+  &.is-disabled, &.is-disabled:hover, &.is-disabled:focus, 
+  &[disabled], &[disabled]:hover, &[disabled]:focus 
+  {
+    color: var(--vc-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--vc-button-disabled-bg-color);
+    border-color: var(--vc-button-disabled-border-color);
+  }
+  [class*=vc-icon] + span {
+    margin-left: 6px;
+  }
+}
+@each $val in primary,success,warning,info,danger {
+  .vc-button--$(val) {
+    --vc-button-text-color: var(--vc-color-white);
+    --vc-button-bg-color: var(--vc-color-$(val));
+    --vc-button-border-color: var(--vc-color-$(val));
+    --vc-button-outline-color: var(--vc-color-$(val)-light-5);
+    --vc-button-active-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-hover-text-color: var(--vc-color-white);
+    --vc-button-hover-bg-color: var(--vc-color-$(val)-light-3);
+    --vc-button-hover-border-color: var(--vc-color-$(val)-light-3);
+    --vc-button-active-bg-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-active-border-color: var(--vc-color-$(val)-dark-2);
+    --vc-button-disabled-text-color: var(--vc-color-white);
+    --vc-button-disabled-bg-color: var(--vc-color-$(val)-light-5);
+    --vc-button-disabled-border-color: var(--vc-color-$(val)-light-5);
+  }
+  .vc-button--$(val).is-plain {
+    --vc-button-text-color: var(--vc-color-$(val));
+    --vc-button-bg-color: var(--vc-color-$(val)-light-9);
+    --vc-button-border-color: var(--vc-color-$(val)-light-5);
+    --vc-button-hover-text-color: var(--vc-color-white);
+    --vc-button-hover-bg-color: var(--vc-color-$(val));
+    --vc-button-hover-border-color: var(--vc-color-$(val));
+    --vc-button-active-text-color: var(--vc-color-white);
+  }
+}
+
+.vc-button--large {
+  --vc-button-size: 40px;
+  height: var(--vc-button-size);
+  padding: 12px 19px;
+  font-size: var(--vc-font-size-base);
+  border-radius: var(--vc-border-radius-base);
+}
+.vc-button--small {
+  --vc-button-size: 24px;
+  height: var(--vc-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--vc-border-radius-base) - 1px);
+}
+
